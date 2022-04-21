@@ -1,0 +1,19 @@
+package kodlamaio.hrms.core.mernisValidation;
+
+import java.rmi.RemoteException;
+
+import tr.gov.nvi.tckimlik.WS.KPSPublicSoap;
+import tr.gov.nvi.tckimlik.WS.KPSPublicSoapProxy;
+import kodlamaio.hrms.entities.concrete.*;
+
+public class MernisManagerAdapter<JobSeeker> implements UserValidationService<JobSeeker>{
+   
+	@Override
+	public boolean validate(JobSeeker jobSeeker) throws RemoteException {
+		KPSPublicSoap kpsPublicSoap = new KPSPublicSoapProxy();
+		return kpsPublicSoap.TCKimlikNoDogrula(0, null, null, 0);
+	}
+
+
+
+}
